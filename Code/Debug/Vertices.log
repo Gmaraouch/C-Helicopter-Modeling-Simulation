@@ -1,0 +1,22 @@
+﻿Build started 2021-09-29 7:27:31 PM.
+     1>Project "D:\Users\Ghassan\Downloads\Concordia\Fall 2018\MECH 415\MECH415 Helicopter Simulation Project- GM - GCM\Vertices.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I..\..\..\common /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _MBCS /Gm /EHsc /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Helicopter.cpp
+         Helicopter.cpp
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"Debug\Vertices.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /NODEFAULTLIB:libci.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"Debug\Vertices.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"Debug\Vertices.lib" /MACHINE:X86 /SAFESEH:NO /MACHINE:I386 /IGNORE:4089 Debug\Clock.obj
+         Debug\draw_3D_graphics.obj
+         Debug\Environment.obj
+         Debug\functions.obj
+         Debug\Helicopter.obj
+         Debug\Object.obj
+         Debug\ran.obj
+         Debug\rotation.obj
+         Debug\timer.obj
+         Vertices.lib
+         Vertices.vcxproj -> D:\Users\Ghassan\Downloads\Concordia\Fall 2018\MECH 415\MECH415 Helicopter Simulation Project- GM - GCM\Debug\Vertices.exe
+     1>Done Building Project "D:\Users\Ghassan\Downloads\Concordia\Fall 2018\MECH 415\MECH415 Helicopter Simulation Project- GM - GCM\Vertices.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:02.86
