@@ -8,6 +8,7 @@ using namespace std;
 
 extern ofstream fout;
 
+//constructor for the timer. Inputs are hours, minute, seconds and stall
 Timer::Timer(int h, int m, int s, int st)
 {
 	hour = h;
@@ -21,8 +22,11 @@ Timer::~Timer()
 {
 	fout << "\nDestructing timer.";
 }
+
+//function to update the timer
 void Timer::update_timer()
 {
+	//check if the timer didn't already end
 	if (sec == 0 && min == 0 && hour == 0)
 	{
 		fout << "\nTimer has already ended.";
@@ -36,6 +40,7 @@ void Timer::update_timer()
 		sec--;
 	}
 
+	//update the minutes and seconds by checking if they go below 0, and make them 59 (similar to an overflow)
 	if (sec < 0)
 	{
 		sec = 59;
@@ -53,6 +58,7 @@ void Timer::update_timer()
 
 }
 
+//function that displays the timer in the screen
 void Timer::print_time()
 {/*
 	text_xy(hour, 10, 10, 39);
@@ -69,6 +75,7 @@ void Timer::print_time()
 	text_xy(sec, 770, 10);
 }
 
+//function that returns the current time in seconds
 int Timer::current_time()
 {
 	int ans;

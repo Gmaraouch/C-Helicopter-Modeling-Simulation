@@ -19,6 +19,39 @@
 #include "Object.h"
 #include "Clock.h"
 
+/*
+This is the main file.
+This program is a simulation for the equations of motion for a helicopter. See: https://nowere.net/b/arch/87793/src/1358823196340.pdf for equations of motion
+Equations of motion are calculated by using Euler time stepping.
+The program incorporates 2 players (helicopters). The first one is controlled using wasd and the second one is controlled using the arrow keys.
+The goal of the game is to pick up the monkeys scattered around the map and bring them back into the helipad.
+A summary of all the keys for the program are as follow:
+Key	Function
+1	Change the view to first person view
+2	Change the view to second person view
+3	Change the view to third person view
+P	Change the view from helicopter 1 to helicopter 2
+Q	Increases the force of the main rotor for helicopter 2.
+W	Decreases the force of the main rotor for helicopter 2
+A	Decreases the force of the tail rotor for helicopter 2
+S	Increase the force of the tail rotor for helicopter 2
+Up	Increases the force of the main rotor for helicopter 1.
+Down 	Decreases the force of the main rotor for helicopter 1
+Left	Decreases the force of the tail motor for helicopter 1
+Right	Increases the force of the tail motor for helicopter 1
+M	Zooms out to the helicopter diagonally when in 3rd person view.
+N	Zooms in to the helicopter diagonally when in 3rd person view.
+L	Moves the camera in the upward in the z direction when in 3rd person view.
+K	Moves the camera down in the z redirection in 3rd person view.
+J	Move the camera away from the helicopter in the y direction in 3rd person view.
+H	Moves the camera towards the helicopter in the y direction in 3rd person view.
+G	Moves the camera away in the x direction in 3rd person view.
+F	Moves the camera towards the helicopter in the x direction in 3rd person view.
+O	Changes the force input of the arrow keys controls both helicopter 1 and 2. Helicopter 2 will only follow 1 if it had the same yaw and velocities prior to pressing the key.
+R	Pick up an object for helicopter 1 when it is within a certain distance.From it
+T	Pick up an object for helicopter 2 when it is within a certain distance from it.
+*/
+
 // 3D graphics window size in pixels
 int WIDTH_MIN = 0;
 int HEIGHT_MIN = 0;
@@ -37,8 +70,6 @@ using namespace std;
 
 const double PI = atan(1) / 4;
 
-extern unsigned char Key_input[256];
-
 ofstream fout("debug.txt");
 ofstream sout("simulation.csv");
 
@@ -46,30 +77,29 @@ ofstream sout("simulation.csv");
 
 class World
 {
-	environment *map;
-	helicopter *Helis[2];
-	double points;
-	Object *objects[4];
-	mesh *goal;
+	environment *map; //create an environment map
+	helicopter *Helis[2]; //create a helicopter array of 2
+	double points; //current number of points
+	Object *objects[4]; //number of objects/monkeys to pickup
+	mesh *goal; //mesh for the goal
 
 public:
 
 	int n; //number of helicopters
-	World(int N);
+	World(int N); 
 	~World();
-	void draw_players();
-	void draw_map();
-	void calculate();
-	void force();
-	void set_view_game();
-	void display();
-	void draw_goal();
-	void draw_object();
-	int collision();
-	void draw_objects();
-	int pickup1();
-	int pickup2();
-	int addpoints();
+	void draw_players(); //function to render the helicopters
+	void draw_map(); //function to render the map
+	void calculate(); //function that iterates the position of the helicopters
+	void force(); //function to obtain the force input
+	void set_view_game(); //set the perspective view
+	void display(); //display the text
+	void draw_goal(); //function to rnder the goal
+	void draw_object(); //function to render the monkeys/objects
+	int collision(); //function to detect the collision between players (helicoptres)
+	int pickup1(); //function for the first player to pick up a monkey/object
+	int pickup2(); //function for the second player to pick up a monkey/object
+	int addpoints(); //function to add points when a monkey/object is brought to the goal
 };
 
 World::World(int N) //initialize the member variables of the game
@@ -311,7 +341,6 @@ void World::set_view_game() //set the view for the games. Can alternate between 
 
 void World::draw_goal() //draw the goal where the objets have to be brought to
 {
-	
 	goal->Scale = 1.0;
 	goal->draw(0.0, 0.0, -2, 0.0, 0.0, 0.0);
 }

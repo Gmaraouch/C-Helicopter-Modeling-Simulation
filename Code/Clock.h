@@ -1,3 +1,4 @@
+//Header file for the Timer class
 
 class Timer
 {

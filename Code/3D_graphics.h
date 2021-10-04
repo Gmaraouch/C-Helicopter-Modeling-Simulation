@@ -40,7 +40,7 @@ public:
 
 
 // global variable to store keyboard input
-extern unsigned char Key_input[256];
+//extern unsigned char Key_input[256];
 
 // check if key c is currently pressed
 // note that multiple keys can be pressed at once

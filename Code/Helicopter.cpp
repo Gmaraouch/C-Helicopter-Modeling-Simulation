@@ -11,7 +11,6 @@ using namespace std;
 #include "helicopter.h"
 
 const double PI = atan(1) / 4;
-extern unsigned char Key_input[256];
 
 //initialize a helicopter with defined initial position and file
 helicopter::helicopter(double *p, char *file_name)
@@ -121,6 +120,7 @@ helicopter::~helicopter()
 
 }
 
+//the & is return by reference
 double & helicopter::get_X(int i)
 {
 	static double dans = 0;
@@ -156,6 +156,7 @@ void helicopter::draw_heli()
 	sim->draw(X[1], X[2], Z, X[3], pitch, roll);
 }
 
+//set the perspective view of the helicopter (1st, 2nd and 3rd person views)
 void helicopter::set_view2()
 {
 	static double R[4][4];
@@ -166,10 +167,9 @@ void helicopter::set_view2()
 	static int flag = 3;
 	static double x=10.0, y=10.0, z=10.0;
 
-
+	//press 1, 2 or 3 to change between first person, second person or third person view
 	if (KEY('1'))
 	{
-		Key_input['1'] = 0;
 		flag = 1;
 	}
 	else if (KEY('2'))
@@ -188,50 +188,53 @@ void helicopter::set_view2()
 		{
 			x += 0.1;
 			y += 0.1;
-			z+=0.1; //zoom out
+			z+=0.1; 
 		}
 		else if (KEY('N'))
 		{
 			x -= 0.1;
 			y -= 0.1;
-			z-=0.1; //zoom out
+			z-=0.1; 
 		}
 
 		if (KEY('L'))
 		{
-			z += 0.1; //zoom out
+			z += 0.1; 
 		}
 		else if (KEY('K'))
 		{
-			z -= 0.1; //zoom out
+			z -= 0.1; 
 		}
 
 		if (KEY('G'))
 		{
-			x += 0.1; //zoom out
+			x += 0.1; 
 		}
 		else if (KEY('F'))
 		{
-			x -= 0.1; //zoom out
+			x -= 0.1; 
 		}
 
 		if (KEY('J'))
 		{
-			y += 0.1; //zoom out
+			y += 0.1; 
 		}
 		else if (KEY('H'))
 		{
-			y -= 0.1; //zoom out
+			y -= 0.1; 
 		}
 
+		//set the eye point
 		eye_point[1] = x + X[1];
 		eye_point[2] = y + X[2];
 		eye_point[3] = z;
 
+		//set the look at point 
 		lookat_point[1] = X[1];
 		lookat_point[2] = X[2];
 		lookat_point[3] = 0;
 
+		//define the up direction
 		up_direction[1] = 0;
 		up_direction[2] = 0;
 		up_direction[3] = 1;
@@ -303,6 +306,7 @@ void helicopter::set_view2()
 	set_view(eye_point, lookat_point, up_direction);
 }
 
+//obtain the force input (U) for the first player
 void helicopter::force_input()
 {
 	
@@ -337,6 +341,7 @@ void helicopter::force_input()
 	
 }
 
+//obtain the force input (U) for the second player
 void helicopter::force_input2()
 {
 
