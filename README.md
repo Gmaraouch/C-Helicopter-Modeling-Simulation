@@ -1,5 +1,9 @@
 #Simulation for MECH 415 - Advanced Programming in C++
  
+ Credits:  
+ Ghassan Maraouch  
+ Gian-Carlo Mignacca  
+ 
 This program is a simulation for the equations of motion for a helicopter. See: https://nowere.net/b/arch/87793/src/1358823196340.pdf for equations of motion  
 Equations of motion are calculated by using Euler time stepping.  
 The program incorporates 2 players (helicopters). The first one is controlled using awsd and the second one is controlled using the arrow keys.  
